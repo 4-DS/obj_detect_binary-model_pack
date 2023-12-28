@@ -2,9 +2,32 @@
 
 During the CV Pipeline Model_Pack stage, the following steps take place:
 1. Model conversion     
-   The model trained in the previous CV-Pipeline Model_Train stage is converted into a format suitable for specific scenarios. For example, in the case of the Binary CV-Pipeline scenario, the model can be passed in PyTorch or another format in which it was trained.
+   The model trained in the previous CV-Pipeline Model_Train step is converted into a format suitable for specific scenarios. For example, in the case of the Binary CV-Pipeline scenario, the model can be passed in PyTorch or another format in which it was trained.
 2. Packaging into BentoArchive     
-   After model conversion, the model weights and all necessary artifacts (e.g., test image, predictions on the test image) are packaged into BentoArchive. Packaging into BentoArchive allows creating a containerized application that can be easily deployed and used artifact delivery (inference files) to the production environment.
+   After model conversion, the model weights and all necessary artifacts (e.g., test image, predictions on the test image) are packaged into BentoArchive.
 
-Input and output for the CV pipeline step:     
-<a id="blob-path" href="https://github.com/4-DS/obj_detect_binary-model_pack/blob/main/model_pack.ipynb?short_path=f6cb892#L57C1-L92C17">model_pack.ipynb</a>
+Input data for step CV-Pipeline: model_pack
+- **obj_detect_inference_files**     
+Saved weights of the trained model (weights of the last epoch and with the best achieved metrics), configuration files from the previous CV-Pipeline step (model_train)
+
+The output of this step CV-Pipeline is
+- **bento_service**     
+BentoArchive, packaged model service via BentoML (saved as a zip archive)
+
+## How to run a step CV-Pipeline: model_pack
+
+### clone the repository: model_pack
+```
+git clone --recurse-submodules https://github.com/4-DS/obj_detect_binary-model_pack.git
+cd obj_detect_binary-model_pack
+```  
+
+### run step CV-Pipeline:model_pack
+```
+python step.dev.py
+```  
+or
+```
+step.prod.py
+``` 
+
