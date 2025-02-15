@@ -1,0 +1,19 @@
+{
+    "pipeline_params":
+    {
+        "env_name":"user",
+        "pipeline_name":"obj_detect_binary",
+        "zone_name":"test"
+    },
+    "step_params": {},
+    "substeps_params":
+    [        
+        {
+            "substep_name":"model_pack.ipynb",
+            "substep_params":
+            {
+                "save_best": false
+            }
+        }
+    ]
+}
